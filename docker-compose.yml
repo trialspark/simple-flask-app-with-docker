@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  new-flask-service:
+    build: 
+      context: .
+      dockerfile: ./flask/Dockerfile
+    entrypoint: flask run --host=0.0.0.0 --port 5080
+    environment:
+      FLASK_APP: ./run.py
+    volumes:
+      - .:/app:cached
+    ports:
+      - "5081:5080"
